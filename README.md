@@ -54,6 +54,35 @@ Nos preparamos usando o modulo http.server do python e deixamos o netcat escutan
 
 ![preparacao](https://miro.medium.com/max/1800/1*z0USzJke2awbInYi9cVp_Q.png)
 
+Para enviar a requisição, eu usei a lib requests do python, pois estava sem o BurpSuite, e basicamente o script fica assim: 
+
+headers = {       
+
+"Host":"10.10.229.206",
+
+"User-Agent":"Mozzila/5.0",
+
+"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp.*/*;q=0.8",
+
+"Accept-Language":"en-US,en;q=0.5",
+
+"Accept-Encoding":"gzip, deflate", 
+"DNT":"1",
+
+"Cookie":"session=seucookie",
+
+"Connection":"close",
+
+"Upgrade-Insceuro-Requests":"1",
+
+"Cache-Control":"max-age=0"
+
+} 
+
+a = requests.get("http://10.10.251.109", headers=headers)
+
+
+
 
 Depois de tudo preparardo, criptografamos em base64 e enviamos uma requisição para o servidor junto ao cookie com payload criptografado em base64, e pronto!
 
